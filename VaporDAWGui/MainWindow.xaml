@@ -1,0 +1,32 @@
+﻿<Window x:Class="VaporDAWGui.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:VaporDAWGui"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="364.085" Width="743.963">
+    <Grid>
+        <TabControl x:Name="tabControl">
+            <TabItem Header="Compose">
+                <DockPanel LastChildFill="True" Margin="0">
+                    <ListView x:Name="listView" Width="150">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn/>
+                            </GridView>
+                        </ListView.View>
+                        <local:SampleList Height="100" Width="100"/>
+                    </ListView>
+                    <local:Composer Content="Test" Height="308.5" VerticalAlignment="Top" Width="100"/>
+                </DockPanel>
+            </TabItem>
+            <TabItem Header="Samples">
+                <Grid Background="#FFE5E5E5">
+                    <local:SampleList Content="Test" Height="308.5" VerticalAlignment="Top" Width="100"/>
+                </Grid>
+            </TabItem>
+        </TabControl>
+
+    </Grid>
+</Window>
