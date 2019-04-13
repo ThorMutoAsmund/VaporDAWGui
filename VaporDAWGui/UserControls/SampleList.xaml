@@ -5,16 +5,30 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:VaporDAWGui"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
+             d:DesignHeight="300" d:DesignWidth="300" Background="{DynamicResource {x:Static SystemColors.ControlDarkBrushKey}}" Height="300" Width="300">
     <ListBox x:Name="samplesListBox" Margin="0" ItemsSource="{Binding}"
                  SelectedItem="{Binding SelectedSample, RelativeSource={RelativeSource AncestorType=Window}}">
         <ListBox.ItemTemplate>
             <DataTemplate>
-                <DockPanel Margin="2">
-                    <Rectangle Fill="Gray" Width="32" Height="32" DockPanel.Dock="Left"/>
-                    <TextBlock Margin="5" Text="{Binding Name}" VerticalAlignment="Center"/>
-                </DockPanel>
+                <StackPanel>
+                    <TextBlock Text="{Binding Name}" />
+                </StackPanel>
             </DataTemplate>
         </ListBox.ItemTemplate>
     </ListBox>
+    <!--<Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="300"/>
+            
+        </Grid.ColumnDefinitions>
+
+        <ListBox Name = "listbox" Grid.Column="0">
+            <ListBoxItem Content = "XAML Tutorials" />
+            <ListBoxItem Content = "WPF Tutorials" />
+            <ListBoxItem Content = "Silverlight Tutorials" />
+            <ListBoxItem Content = "Windows 10 Tutorials" />
+            <ListBoxItem Content = "iOS Tutorials" />
+        </ListBox>
+    </Grid>-->
+
 </UserControl>

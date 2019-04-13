@@ -16,8 +16,11 @@ namespace VaporDAWGui
             get => this._value;
             set
             {
-                this._value = value;
-                this.ValueChanged?.Invoke(this, this._value);
+                if (!EqualityComparer<TArg>.Default.Equals(this._value, value))
+                {
+                    this._value = value;
+                    this.ValueChanged?.Invoke(this, this._value);
+                }
             }
         }
 

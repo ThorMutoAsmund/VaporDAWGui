@@ -37,6 +37,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -58,11 +59,16 @@
     <Compile Include="Env\Project.cs" />
     <Compile Include="Env\Env.cs" />
     <Compile Include="Env\Config.cs" />
-    <Compile Include="SampleInfo.cs" />
+    <Compile Include="Util\SampleInfo.cs" />
+    <Compile Include="UserControls\Part.xaml.cs">
+      <DependentUpon>Part.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\SampleList.xaml.cs">
       <DependentUpon>SampleList.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Util\MathExtensions.cs" />
     <Compile Include="Util\Subscribable.cs" />
+    <Compile Include="Util\WpfExtensions.cs" />
     <Page Include="UserControls\Composer.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -82,6 +88,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="UserControls\Part.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UserControls\SampleList.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -114,6 +124,79 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Demo projects\Project 01\Parts\p1.part.js" />
+    <Content Include="Demo projects\Project 01\Samples\Bass\DS_BassA140D-01.wav" />
+    <Content Include="Demo projects\Project 01\Samples\Bass\DS_BassA140D-02.wav" />
+    <Content Include="Demo projects\Project 01\Samples\Bass\DS_BassA140D-03.wav" />
+    <Content Include="Demo projects\Project 01\Samples\Bass\DS_BassA140D-04.wav" />
+    <Content Include="Demo projects\Project 01\Samples\Bass\DS_BassA140D-05.wav" />
+    <Content Include="Demo projects\Project 01\Samples\Bass\DS_BassB140D-01.wav" />
+    <Content Include="Demo projects\Project 01\Samples\Bass\DS_BassB140D-02.wav" />
+    <Content Include="Demo projects\Project 01\Samples\Bass\DS_BassB140D-03.wav" />
+    <Content Include="Demo projects\Project 01\Samples\Bass\DS_BassB140D-04.wav" />
+    <Content Include="Demo projects\Project 01\Samples\Bass\DS_BassB140D-05.wav" />
+    <Content Include="Demo projects\Project 01\Samples\Beats\DS_BeatA140-01.wav" />
+    <Content Include="Demo projects\Project 01\Samples\Beats\DS_BeatA140-02.wav" />
+    <Content Include="Demo projects\Project 01\Samples\Beats\DS_BeatA140-03.wav" />
+    <Content Include="Demo projects\Project 01\Samples\Beats\DS_BeatA140-04.wav" />
+    <Content Include="Demo projects\Project 01\Samples\Beats\DS_BeatA140-05.wav" />
+    <Content Include="Demo projects\Project 01\Samples\Beats\DS_BeatB140-01.wav" />
+    <Content Include="Demo projects\Project 01\Samples\Beats\DS_BeatB140-02.wav" />
+    <Content Include="Demo projects\Project 01\Samples\Beats\DS_BeatB140-03.wav" />
+    <Content Include="Demo projects\Project 01\Samples\Beats\DS_BeatB140-04.wav" />
+    <Content Include="Demo projects\Project 01\Samples\Beats\DS_BeatB140-05.wav" />
+    <Content Include="Demo projects\Project 01\Samples\Beats\DS_BeatC140-01.wav" />
+    <Content Include="Demo projects\Project 01\Samples\Beats\DS_BeatC140-02.wav" />
+    <Content Include="Demo projects\Project 01\Samples\Beats\DS_BeatC140-03.wav" />
+    <Content Include="Demo projects\Project 01\Samples\Beats\DS_BeatC140-04.wav" />
+    <Content Include="Demo projects\Project 01\Samples\Beats\DS_BeatC140-05.wav" />
+    <Content Include="Demo projects\Project 01\Samples\Beats\DS_BeatD140-01.wav" />
+    <Content Include="Demo projects\Project 01\Samples\Beats\DS_BeatD140-02.wav" />
+    <Content Include="Demo projects\Project 01\Samples\Beats\DS_BeatD140-03.wav" />
+    <Content Include="Demo projects\Project 01\Samples\Beats\DS_BeatD140-04.wav" />
+    <Content Include="Demo projects\Project 01\Samples\Beats\DS_BeatD140-05.wav" />
+    <Content Include="Demo projects\Project 01\Samples\Beats\DS_BeatE140-01.wav" />
+    <Content Include="Demo projects\Project 01\Samples\Beats\DS_BeatE140-02.wav" />
+    <Content Include="Demo projects\Project 01\Samples\Beats\DS_BeatE140-03.wav" />
+    <Content Include="Demo projects\Project 01\Samples\Beats\DS_BeatE140-04.wav" />
+    <Content Include="Demo projects\Project 01\Samples\Beats\DS_BeatE140-05.wav" />
+    <Content Include="Demo projects\Project 01\Samples\DS_BassA140D-03.wav" />
+    <Content Include="Demo projects\Project 01\Samples\DS_BassA140D-04.wav" />
+    <Content Include="Demo projects\Project 01\Samples\Organ\DS_BitOrgan140D-01.wav" />
+    <Content Include="Demo projects\Project 01\Samples\Organ\DS_BitOrgan140D-02.wav" />
+    <Content Include="Demo projects\Project 01\Samples\Organ\DS_BitOrgan140D-03.wav" />
+    <Content Include="Demo projects\Project 01\Samples\Organ\DS_BitOrgan140D-04.wav" />
+    <Content Include="Demo projects\Project 01\Samples\Organ\DS_BitOrgan140D-05.wav" />
+    <Content Include="Demo projects\Project 01\Samples\Organ\DS_BitOrganFX140D-01.wav" />
+    <Content Include="Demo projects\Project 01\Samples\Organ\DS_BitOrganFX140D-02.wav" />
+    <Content Include="Demo projects\Project 01\Samples\Organ\DS_BitOrganFX140D-03.wav" />
+    <Content Include="Demo projects\Project 01\Samples\Organ\DS_BitOrganFX140D-04.wav" />
+    <Content Include="Demo projects\Project 01\Samples\Organ\DS_BitOrganFX140D-05.wav" />
+    <Content Include="Demo projects\Project 01\Samples\Synth\DS_FXA140D-01.wav" />
+    <Content Include="Demo projects\Project 01\Samples\Synth\DS_FXA140D-02.wav" />
+    <Content Include="Demo projects\Project 01\Samples\Synth\DS_FXA140D-03.wav" />
+    <Content Include="Demo projects\Project 01\Samples\Synth\DS_FXA140D-04.wav" />
+    <Content Include="Demo projects\Project 01\Samples\Synth\DS_FXA140D-05.wav" />
+    <Content Include="Demo projects\Project 01\Samples\Synth\DS_FXB140D-01.wav" />
+    <Content Include="Demo projects\Project 01\Samples\Synth\DS_FXB140D-02.wav" />
+    <Content Include="Demo projects\Project 01\Samples\Synth\DS_FXB140D-03.wav" />
+    <Content Include="Demo projects\Project 01\Samples\Synth\DS_FXB140D-04.wav" />
+    <Content Include="Demo projects\Project 01\Samples\Synth\DS_FXB140D-05.wav" />
+    <Content Include="Demo projects\Project 01\Samples\Synth\DS_JenSyn140D-01.wav" />
+    <Content Include="Demo projects\Project 01\Samples\Synth\DS_JenSyn140D-02.wav" />
+    <Content Include="Demo projects\Project 01\Samples\Synth\DS_JenSyn140D-03.wav" />
+    <Content Include="Demo projects\Project 01\Samples\Synth\DS_JenSyn140D-04.wav" />
+    <Content Include="Demo projects\Project 01\Samples\Synth\DS_JenSyn140D-05.wav" />
+    <Content Include="Demo projects\Project 01\Samples\Synth\DS_JenSyn140D-06.wav" />
+    <Content Include="Demo projects\Project 01\Samples\Synth\DS_JenSyn140D-07.wav" />
+    <Content Include="Demo projects\Project 01\Samples\Synth\DS_PadA140D-01.wav" />
+    <Content Include="Demo projects\Project 01\Samples\Synth\DS_PadA140D-02.wav" />
+    <Content Include="Demo projects\Project 01\Samples\Synth\DS_PadA140D-03.wav" />
+    <Content Include="Demo projects\Project 01\Samples\Synth\DS_PadA140D-04.wav" />
+    <Content Include="Demo projects\Project 01\Samples\Synth\DS_PadA140D-05.wav" />
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

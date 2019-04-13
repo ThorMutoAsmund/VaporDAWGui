@@ -1,0 +1,19 @@
+﻿<UserControl x:Class="VaporDAWGui.Part"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:VaporDAWGui"
+             mc:Ignorable="d" 
+             HorizontalAlignment="Left"
+             VerticalAlignment="Stretch"
+	        HorizontalContentAlignment="Stretch"
+	        VerticalContentAlignment="Stretch"
+             Width="300"
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Border BorderThickness="1" BorderBrush="Black">
+        <Canvas Background="#ddd" Margin="0,0,0,0">
+            <TextBlock Canvas.Top="15" Canvas.Left="10" Name="titleTextBlock"></TextBlock>
+        </Canvas>
+    </Border>
+</UserControl>

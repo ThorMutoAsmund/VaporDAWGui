@@ -46,13 +46,10 @@ namespace VaporDAWGui
                     Name = System.IO.Path.GetFileName(x),
                     Path = x
                 });
-                this.Content = null;
             }
             catch
             {
-                //info of this folder was not able to get
                 this.DataContext = null;
-                this.Content = "Couldn't scan project path";
                 return;
             }
         }

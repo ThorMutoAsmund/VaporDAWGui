@@ -5,28 +5,43 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:VaporDAWGui"
         mc:Ignorable="d"
-        Title="MainWindow" Height="364.085" Width="743.963">
-    <Grid>
-        <TabControl x:Name="tabControl">
+        Title="MainWindow" Height="600" Width="1000">
+    <DockPanel>
+        <Menu DockPanel.Dock="Top" >
+            <MenuItem Header="_File" Name="fileMenu" >
+                <MenuItem Header="_New" Name="newMenu" />
+                <MenuItem Header="_Open" Name="openMenu" />
+                <Separator />
+                <MenuItem Header="_Close" Name="closeMenu" />
+                <Separator />
+                <MenuItem Header="_Save" Name="saveMenu" />
+                <Separator />
+                <MenuItem Header="Recent _Files..." Name="recentFilesMenu" />
+                <Separator />
+                <MenuItem Header="_Exit"  Name="exitMenu"/>
+            </MenuItem>
+            <MenuItem Header="_Help" >
+                <MenuItem Header="_About" Name="aboutMenu" />
+                <Separator />
+                <MenuItem Header="_Check for updates" Name="checkForUpdatesMenu" />
+            </MenuItem>
+        </Menu>
+        <TabControl x:Name="tabControl" Grid.ColumnSpan="3" Margin="0,0,0,0.5">
             <TabItem Header="Compose">
                 <DockPanel LastChildFill="True" Margin="0">
-                    <ListView x:Name="listView" Width="150">
-                        <ListView.View>
-                            <GridView>
-                                <GridViewColumn/>
-                            </GridView>
-                        </ListView.View>
-                        <local:SampleList Height="100" Width="100"/>
-                    </ListView>
-                    <local:Composer Content="Test" Height="308.5" VerticalAlignment="Top" Width="100"/>
+                    <Border>
+                        <StackPanel Margin="3">
+                            <Label  Height="25" Content="Samples" Background="LightGray" />
+                            <local:SampleList Height="auto" Width="200" HorizontalAlignment="Left"/>
+                        </StackPanel>
+                    </Border>
+                    <local:Composer Visibility="Hidden" Height="auto" Width="auto" x:Name="composer"/>
                 </DockPanel>
             </TabItem>
-            <TabItem Header="Samples">
+            <TabItem Header="Scripts">
                 <Grid Background="#FFE5E5E5">
-                    <local:SampleList Content="Test" Height="308.5" VerticalAlignment="Top" Width="100"/>
                 </Grid>
             </TabItem>
         </TabControl>
-
-    </Grid>
+    </DockPanel>
 </Window>

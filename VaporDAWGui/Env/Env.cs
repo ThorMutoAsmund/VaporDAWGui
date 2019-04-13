@@ -10,6 +10,6 @@ namespace VaporDAWGui
     {
         public static Config Config { get; private set; } = new Config();
         public static Project Project { get; private set; } = new Project();
-
+        public static Composer Composer { get; set; } 
     }
 }
