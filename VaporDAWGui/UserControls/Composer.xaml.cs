@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -28,8 +29,8 @@ namespace VaporDAWGui
         public double TimeOffset { get; private set; }
         public double SecondsPerPixel { get; private set; }
         public int NumberOfRows { get; private set; }
+        public double RowHeight { get; private set; }
         private double defaultDuration;
-
 
         public Composer()
         {
@@ -41,6 +42,7 @@ namespace VaporDAWGui
             this.SecondsPerPixel = 0.01F;
             this.defaultDuration = 10F;
             this.NumberOfRows = 10;
+            this.RowHeight = 50F;
 
             this.MouseDown += (object sender, MouseButtonEventArgs e) =>
             {
@@ -60,6 +62,31 @@ namespace VaporDAWGui
 
                 part.SetStartTimeAndDuration(this.timeWhereLastClicked, this.defaultDuration);
             };
+        }
+
+        public IEnumerable<Part> GetPartsInRow(int row)
+        {
+            return this.grid.Children.OfType<Part>().Where(element => Grid.GetRow(element) == row);
+        }
+
+        public IEnumerable<Part> GetAllParts()
+        {
+            return this.grid.Children.OfType<Part>();
+        }
+
+        public void BringToFront(Part part)
+        {
+            var maxZ = -10000;
+            foreach (var child in this.grid.Children)
+            {
+                var z = Grid.GetZIndex(child as UIElement);
+                if (z > maxZ)
+                {
+                    maxZ = z;
+                }
+
+            }
+            Grid.SetZIndex(part, maxZ + 1);
         }
 
     }

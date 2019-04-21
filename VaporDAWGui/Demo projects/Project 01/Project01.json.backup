@@ -1,0 +1,27 @@
+﻿{
+	title: "Project01",
+	tracks:
+	[
+		{
+			name: "",
+			mute: false,
+			solo: false,
+			toMixer: true,
+			parts:
+			[
+				{
+					id: "",
+					name: "part1",
+					start: 0.0,
+					duration: 5.0
+				},
+				{
+					id: "",
+					name: "part1"
+					start: 1.0,
+					duration: 5.0
+				}
+			]
+		}
+	]
+}

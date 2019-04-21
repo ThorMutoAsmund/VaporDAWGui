@@ -16,6 +16,8 @@
                 <Separator />
                 <MenuItem Header="_Save" Name="saveMenu" />
                 <Separator />
+                <MenuItem Header="S_ettings..." Name="settingsMenu" />
+                <Separator />
                 <MenuItem Header="Recent _Files..." Name="recentFilesMenu" />
                 <Separator />
                 <MenuItem Header="_Exit"  Name="exitMenu"/>

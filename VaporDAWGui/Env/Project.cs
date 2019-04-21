@@ -25,7 +25,7 @@ namespace VaporDAWGui
             this.Loaded.Value = true;
             this.ChangesMade.Value = false;
 
-            Env.Config.AddRecentFile(path);
+            Env.Conf.AddRecentFile(path);
         }
 
         public void Save()

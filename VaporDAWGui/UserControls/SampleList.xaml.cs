@@ -41,7 +41,7 @@ namespace VaporDAWGui
         {
             try
             {
-                this.DataContext = Directory.EnumerateFiles(System.IO.Path.Combine(Env.Project.ProjectPath.Value, Env.Config.SamplesFolder), "*.wav").Select(x => new SampleInfo()
+                this.DataContext = Directory.EnumerateFiles(System.IO.Path.Combine(Env.Project.ProjectPath.Value, Env.Conf.SamplesFolder), "*.wav").Select(x => new SampleInfo()
                 {
                     Name = System.IO.Path.GetFileName(x),
                     Path = x

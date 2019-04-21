@@ -13,6 +13,8 @@ namespace VaporDAWGui
         {
             InitializeComponent();
 
+            Env.MainWindow = this;
+
             this.newMenu.Click += (sender, e) => OpenProject("Select a new empty folder");
             this.openMenu.Click += (sender, e) => OpenProject("Select an existing project folder");
             this.saveMenu.Click += (sender, e) => Env.Project.Save();
@@ -26,7 +28,7 @@ namespace VaporDAWGui
             {
                 this.recentFilesMenu.Items.Clear();
 
-                foreach (var recentFilePath in Env.Config.RecentFiles)
+                foreach (var recentFilePath in Env.Conf.RecentFiles)
                 {
                     var menuItem = new MenuItem()
                     {
@@ -55,9 +57,9 @@ namespace VaporDAWGui
                 SetTitle(System.IO.Path.GetFileNameWithoutExtension(e));
             };
 
-            if (Env.Config.OpenDemoProjectOnLoad)
+            if (Env.Conf.OpenDemoProjectOnLoad)
             {
-                var rootPath = System.IO.Directory.GetParent(Env.Config.AppPath).FullName;
+                var rootPath = System.IO.Directory.GetParent(Env.Conf.AppPath).FullName;
                 rootPath = System.IO.Directory.GetParent(rootPath).FullName;
                 Env.Project.Open(System.IO.Path.Combine(rootPath, @"Demo projects\Project 01"));
             }
@@ -65,7 +67,7 @@ namespace VaporDAWGui
 
         private void SetTitle(string projectName)
         {
-            this.Title = $"{(String.IsNullOrEmpty(projectName) ? String.Empty : $"{projectName} - ")}{Env.Config.ApplicationName}";
+            this.Title = $"{(String.IsNullOrEmpty(projectName) ? String.Empty : $"{projectName} - ")}{Env.Conf.ApplicationName}";
         }
 
         private bool ConfirmChangesMade()
@@ -122,7 +124,7 @@ namespace VaporDAWGui
             using (var dialog = new System.Windows.Forms.FolderBrowserDialog())
             {
                 dialog.Description = description;
-                dialog.SelectedPath = Env.Project.ProjectPath.Value ?? Env.Config.AppPath;
+                dialog.SelectedPath = Env.Project.ProjectPath.Value ?? Env.Conf.AppPath;
                 System.Windows.Forms.DialogResult result = dialog.ShowDialog();
 
                 if (result == System.Windows.Forms.DialogResult.OK)

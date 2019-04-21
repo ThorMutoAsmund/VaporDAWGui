@@ -11,9 +11,17 @@
 	        VerticalContentAlignment="Stretch"
              Width="300"
              d:DesignHeight="300" d:DesignWidth="300">
-    <Border BorderThickness="1" BorderBrush="Black">
+    <Border BorderThickness="2" BorderBrush="Black">
         <Canvas Background="#ddd" Margin="0,0,0,0">
             <TextBlock Canvas.Top="15" Canvas.Left="10" Name="titleTextBlock"></TextBlock>
         </Canvas>
     </Border>
+    <UserControl.ContextMenu>
+        <ContextMenu>
+            <MenuItem Header="Edit start and duration..." Name="editStartAndDurationMenuItem"/>
+            <!--<MenuItem Header="Menu item 2" />
+                <Separator />
+                <MenuItem Header="Menu item 3" />-->
+        </ContextMenu>
+    </UserControl.ContextMenu>
 </UserControl>

@@ -16,6 +16,10 @@ namespace VaporDAWGui
         public string SamplesFolder => "samples";
         public IEnumerable<string> RecentFiles => this.recentFiles;
 
+        public int SnapMargin => 12;
+        public int MinPartWidth => 10;
+        public string TimeDurationFormat => "g5";
+
         public void AddRecentFile(string path)
         {
             if (!this.recentFiles.Contains(path))
