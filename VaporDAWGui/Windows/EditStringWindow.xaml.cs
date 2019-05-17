@@ -17,31 +17,26 @@ namespace VaporDAWGui
     /// <summary>
     /// Interaction logic for EditStartAndDurationWindow.xaml
     /// </summary>
-    public partial class EditStartTimeAndDurationWindow : Window
+    public partial class EditStringWindow : Window
     {
-        private double _startTime;
-        public double StartTime
+        private string _value;
+        public string Value
         {
-            get => double.TryParse(this.startTimeTextBox.Text, out double result) ? result : this._startTime;
+            get => this.stringTextBox.Text;
             set
             {
-                this._startTime = value;
-                this.startTimeTextBox.Text = value.ToString(Env.Conf.TimeDurationFormat);
+                this._value = value;
+                this.stringTextBox.Text = value;
             }
         }
 
-        private double _duration;
-        public double Duration
+        public string Label
         {
-            get => double.TryParse(this.durationTextBox.Text, out double result) ? result : this._duration;
-            set
-            {
-                this._duration = value;
-                this.durationTextBox.Text = value.ToString(Env.Conf.TimeDurationFormat);
-            }
+            get => this.stringLabel.Content.ToString();
+            set => this.stringLabel.Content = value;
         }
 
-        public EditStartTimeAndDurationWindow()
+        public EditStringWindow()
         {
             InitializeComponent();
 

@@ -13,7 +13,8 @@ namespace VaporDAWGui
         public bool OpenDemoProjectOnLoad => true;
         public string ApplicationName => "Vapor DAW";
         public string AppPath => System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
-        public string SamplesFolder => "samples";
+        public string SamplesFolder => "Samples";
+        public string ScriptsFolder => "Scripts";
         public IEnumerable<string> RecentFiles => this.recentFiles;
 
         public int SnapMargin => 12;

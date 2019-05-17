@@ -61,6 +61,16 @@
     <Compile Include="Env\Project.cs" />
     <Compile Include="Env\Env.cs" />
     <Compile Include="Env\Config.cs" />
+    <Compile Include="SongComponents\Script.cs" />
+    <Compile Include="SongComponents\TrackPart.cs" />
+    <Compile Include="SongComponents\Sample.cs" />
+    <Compile Include="SongComponents\Track.cs" />
+    <Compile Include="SongComponents\Song.cs" />
+    <Compile Include="UserControls\ScriptList.xaml.cs">
+      <DependentUpon>ScriptList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Util\CustomCommands.cs" />
+    <Compile Include="Util\ScriptInfo.cs" />
     <Compile Include="Util\SampleInfo.cs" />
     <Compile Include="UserControls\Part.xaml.cs">
       <DependentUpon>Part.xaml</DependentUpon>
@@ -72,13 +82,12 @@
     <Compile Include="Util\Subscribable.cs" />
     <Compile Include="Util\UIElementCollectionExtensions.cs" />
     <Compile Include="Util\WpfExtensions.cs" />
-    <Compile Include="Windows\EditStartAndDurationWindow.xaml.cs">
-      <DependentUpon>EditStartAndDurationWindow.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Windows\EditStartTimeAndDurationWindow.xaml.cs">
       <DependentUpon>EditStartTimeAndDurationWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Windows\StandardDialogWindow.cs" />
+    <Compile Include="Windows\EditStringWindow.xaml.cs">
+      <DependentUpon>EditStringWindow.xaml</DependentUpon>
+    </Compile>
     <Page Include="UserControls\Composer.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -102,15 +111,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="UserControls\ScriptList.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="UserControls\SampleList.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Windows\EditStartAndDurationWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Windows\EditStartTimeAndDurationWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Windows\EditStringWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -135,6 +148,60 @@
     </EmbeddedResource>
     <None Include="Demo projects\Project 01\Project01.json.backup" />
     <None Include="Demo projects\Project 01\Project01.json" />
+    <None Include="Js\node_modules\buffer-alloc-unsafe\package.json" />
+    <None Include="Js\node_modules\buffer-alloc-unsafe\readme.md" />
+    <None Include="Js\node_modules\buffer-alloc\package.json" />
+    <None Include="Js\node_modules\buffer-alloc\readme.md" />
+    <None Include="Js\node_modules\buffer-fill\package.json" />
+    <None Include="Js\node_modules\buffer-fill\readme.md" />
+    <None Include="Js\node_modules\buffer-from\LICENSE" />
+    <None Include="Js\node_modules\buffer-from\package.json" />
+    <None Include="Js\node_modules\buffer-from\readme.md" />
+    <None Include="Js\node_modules\core-util-is\float.patch" />
+    <None Include="Js\node_modules\core-util-is\LICENSE" />
+    <None Include="Js\node_modules\core-util-is\package.json" />
+    <None Include="Js\node_modules\core-util-is\README.md" />
+    <None Include="Js\node_modules\debug\.coveralls.yml" />
+    <None Include="Js\node_modules\debug\.eslintrc" />
+    <None Include="Js\node_modules\debug\.npmignore" />
+    <None Include="Js\node_modules\debug\.travis.yml" />
+    <None Include="Js\node_modules\debug\CHANGELOG.md" />
+    <None Include="Js\node_modules\debug\component.json" />
+    <None Include="Js\node_modules\debug\LICENSE" />
+    <None Include="Js\node_modules\debug\Makefile" />
+    <None Include="Js\node_modules\debug\package.json" />
+    <None Include="Js\node_modules\debug\README.md" />
+    <None Include="Js\node_modules\inherits\LICENSE" />
+    <None Include="Js\node_modules\inherits\package.json" />
+    <None Include="Js\node_modules\inherits\README.md" />
+    <None Include="Js\node_modules\isarray\component.json" />
+    <None Include="Js\node_modules\isarray\package.json" />
+    <None Include="Js\node_modules\isarray\README.md" />
+    <None Include="Js\node_modules\ms\license.md" />
+    <None Include="Js\node_modules\ms\package.json" />
+    <None Include="Js\node_modules\ms\readme.md" />
+    <None Include="Js\node_modules\readable-stream\.npmignore" />
+    <None Include="Js\node_modules\readable-stream\float.patch" />
+    <None Include="Js\node_modules\readable-stream\LICENSE" />
+    <None Include="Js\node_modules\readable-stream\package.json" />
+    <None Include="Js\node_modules\readable-stream\README.md" />
+    <None Include="Js\node_modules\stream-parser\.npmignore" />
+    <None Include="Js\node_modules\stream-parser\.travis.yml" />
+    <None Include="Js\node_modules\stream-parser\History.md" />
+    <None Include="Js\node_modules\stream-parser\LICENSE" />
+    <None Include="Js\node_modules\stream-parser\package.json" />
+    <None Include="Js\node_modules\stream-parser\README.md" />
+    <None Include="Js\node_modules\string_decoder\.npmignore" />
+    <None Include="Js\node_modules\string_decoder\LICENSE" />
+    <None Include="Js\node_modules\string_decoder\package.json" />
+    <None Include="Js\node_modules\string_decoder\README.md" />
+    <None Include="Js\node_modules\wav\.travis.yml" />
+    <None Include="Js\node_modules\wav\appveyor.yml" />
+    <None Include="Js\node_modules\wav\History.md" />
+    <None Include="Js\node_modules\wav\LICENSE" />
+    <None Include="Js\node_modules\wav\package.json" />
+    <None Include="Js\node_modules\wav\README.md" />
+    <None Include="Js\package.json" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -215,6 +282,57 @@
     <Content Include="Demo projects\Project 01\Samples\Synth\DS_PadA140D-03.wav" />
     <Content Include="Demo projects\Project 01\Samples\Synth\DS_PadA140D-04.wav" />
     <Content Include="Demo projects\Project 01\Samples\Synth\DS_PadA140D-05.wav" />
+    <Content Include="Demo projects\Project 01\Scripts\PlaySample.js" />
+    <Content Include="Demo projects\Project 01\Scripts\Script1.js" />
+    <Content Include="Demo projects\Project 01\Scripts\Script2.js" />
+    <Content Include="Demo projects\Project 01\Scripts\Script3.js" />
+    <Content Include="Js\Mixer.js" />
+    <Content Include="Js\LoadWav.js" />
+    <Content Include="Js\node_modules\buffer-alloc-unsafe\index.js" />
+    <Content Include="Js\node_modules\buffer-alloc\index.js" />
+    <Content Include="Js\node_modules\buffer-fill\index.js" />
+    <Content Include="Js\node_modules\buffer-from\index.js" />
+    <Content Include="Js\node_modules\core-util-is\lib\util.js" />
+    <Content Include="Js\node_modules\core-util-is\test.js" />
+    <Content Include="Js\node_modules\debug\karma.conf.js" />
+    <Content Include="Js\node_modules\debug\node.js" />
+    <Content Include="Js\node_modules\debug\src\browser.js" />
+    <Content Include="Js\node_modules\debug\src\debug.js" />
+    <Content Include="Js\node_modules\debug\src\index.js" />
+    <Content Include="Js\node_modules\debug\src\inspector-log.js" />
+    <Content Include="Js\node_modules\debug\src\node.js" />
+    <Content Include="Js\node_modules\inherits\inherits.js" />
+    <Content Include="Js\node_modules\inherits\inherits_browser.js" />
+    <Content Include="Js\node_modules\isarray\build\build.js" />
+    <Content Include="Js\node_modules\isarray\index.js" />
+    <Content Include="Js\node_modules\ms\index.js" />
+    <Content Include="Js\node_modules\readable-stream\duplex.js" />
+    <Content Include="Js\node_modules\readable-stream\lib\_stream_duplex.js" />
+    <Content Include="Js\node_modules\readable-stream\lib\_stream_passthrough.js" />
+    <Content Include="Js\node_modules\readable-stream\lib\_stream_readable.js" />
+    <Content Include="Js\node_modules\readable-stream\lib\_stream_transform.js" />
+    <Content Include="Js\node_modules\readable-stream\lib\_stream_writable.js" />
+    <Content Include="Js\node_modules\readable-stream\passthrough.js" />
+    <Content Include="Js\node_modules\readable-stream\readable.js" />
+    <Content Include="Js\node_modules\readable-stream\transform.js" />
+    <Content Include="Js\node_modules\readable-stream\writable.js" />
+    <Content Include="Js\node_modules\stream-parser\index.js" />
+    <Content Include="Js\node_modules\stream-parser\test\transform.js" />
+    <Content Include="Js\node_modules\stream-parser\test\writable.js" />
+    <Content Include="Js\node_modules\string_decoder\index.js" />
+    <Content Include="Js\node_modules\wav\examples\wav123.js" />
+    <Content Include="Js\node_modules\wav\examples\wavinfo.js" />
+    <Content Include="Js\node_modules\wav\index.js" />
+    <Content Include="Js\node_modules\wav\lib\file-writer.js" />
+    <Content Include="Js\node_modules\wav\lib\reader.js" />
+    <Content Include="Js\node_modules\wav\lib\writer.js" />
+    <Content Include="Js\node_modules\wav\test\fixtures\1up.wav" />
+    <Content Include="Js\node_modules\wav\test\fixtures\gameover-rifx.wav" />
+    <Content Include="Js\node_modules\wav\test\fixtures\gameover.wav" />
+    <Content Include="Js\node_modules\wav\test\fixtures\M1F1-float32-AFsp.wav" />
+    <Content Include="Js\node_modules\wav\test\fixtures\M1F1-float64-AFsp.wav" />
+    <Content Include="Js\node_modules\wav\test\reader.js" />
+    <Content Include="Js\test.wav" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

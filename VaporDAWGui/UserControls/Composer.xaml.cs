@@ -51,10 +51,15 @@ namespace VaporDAWGui
                 this.lastTrackClicked = (int)(position.Y / 50);
             };
 
-            this.addPartMenuItem.Click += (object sender, RoutedEventArgs e) =>
+            this.addPartMenuItem.Click += (sender, e) => AddPart();
+        }
+
+        private void AddPart()
+        { 
             {
                 var part = new Part()
                 {
+                    Id = Env.Project.GenerateId(),
                     Title = $"Part {nextPartNumber++}"
                 };
                 Grid.SetRow(part, this.lastTrackClicked);

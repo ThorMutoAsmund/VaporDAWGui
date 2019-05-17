@@ -94,13 +94,13 @@ namespace VaporDAWGui
                     {
                         case PartInteractionType.Drag:
                             {
-                                Env.Project.SetPartStartTime(this.Id, this.StartTime);
-                                Env.Project.SetPartTrack(this.Id, this.draggedRow);
+                                Env.Project.UpdatePartStartTimeAndDuration(this.Id, this.StartTime, this.Duration);
+                                Env.Project.UpdatePartTrack(this.Id, this.draggedRow);
                                 break;
                             }
                         case PartInteractionType.ResizeRight:
                             {
-                                Env.Project.SetPartDuration(this.Id, this.Duration);
+                                Env.Project.UpdatePartStartTimeAndDuration(this.Id, this.StartTime, this.Duration);
                                 break;
 
                             }
@@ -195,23 +195,39 @@ namespace VaporDAWGui
                 }
             };
 
-            this.editStartAndDurationMenuItem.Click += (sender, e) =>
+            this.editStartAndDurationMenuItem.Click += (sender, e) => EditStartAndDuration();
+            this.renameMenuItem.Click += (sender, e) => Rename();
+        }
+
+        private void EditStartAndDuration()
+        {
+            var window = new EditStartTimeAndDurationWindow()
             {
-                var window = new EditStartAndDurationWindow()
-                {
-                    Owner = Env.MainWindow,
-                    StartTime = this.StartTime,
-                    Duration = this.Duration
-                };
-                if (window.ShowDialog() ?? false)
-                {
-                    Env.Project.SetPartStartTime(this.Id, window.StartTime);
-                    Env.Project.SetPartDuration(this.Id, window.Duration);
-
-                    SetStartTimeAndDuration(window.StartTime, window.Duration);
-                }
+                Owner = Env.MainWindow,
+                StartTime = this.StartTime,
+                Duration = this.Duration
             };
+            if (window.ShowDialog() ?? false)
+            {
+                Env.Project.UpdatePartStartTimeAndDuration(this.Id, window.StartTime, window.Duration);
 
+                SetStartTimeAndDuration(window.StartTime, window.Duration);
+            }
+        }
+
+        private void Rename()
+        {
+            var window = new EditStringWindow()
+            {
+                Owner = Env.MainWindow,
+                Value = this.Title
+            };
+            if (window.ShowDialog() ?? false)
+            {
+                Env.Project.UpdatePartTitle(this.Id, window.Value);
+
+                this.Title = window.Value;
+            }
         }
 
         private Part[] GetSnapCandidates()

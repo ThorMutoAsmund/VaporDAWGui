@@ -15,9 +15,9 @@ using System.Windows.Shapes;
 namespace VaporDAWGui
 {
     /// <summary>
-    /// Interaction logic for EditStartAndDurationWindow.xaml
+    /// Interaction logic for EditStartTimeAndDurationWindow.xaml
     /// </summary>
-    public partial class EditStartAndDurationWindow : Window
+    public partial class EditStartTimeAndDurationWindow : StandardDialogWindow
     {
         private double _startTime;
         public double StartTime
@@ -41,12 +41,9 @@ namespace VaporDAWGui
             }
         }
 
-        public EditStartAndDurationWindow()
+        public EditStartTimeAndDurationWindow()
         {
             InitializeComponent();
-
-            this.okButton.Click += (_,__) => this.DialogResult = true;
-            this.cancelButton.Click += (_, __) => this.DialogResult = false;
         }
     }
 }

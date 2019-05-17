@@ -28,10 +28,9 @@
                 </VisualBrush>
             </Border.Background>
         </Border>
-        <local:Part Grid.Row="2"></local:Part>
         <Grid.ContextMenu>
             <ContextMenu>
-                <MenuItem Header="Add part" Name="addPartMenuItem"/>
+                <MenuItem Header="Add empty part" Name="addPartMenuItem"/>
                 <!--<MenuItem Header="Menu item 2" />
                 <Separator />
                 <MenuItem Header="Menu item 3" />-->

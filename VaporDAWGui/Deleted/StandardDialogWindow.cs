@@ -13,6 +13,16 @@ namespace VaporDAWGui
         protected Button okButton;
         protected Button cancelButton;
 
+        public StandardDialogWindow()
+        {
+            this.SizeChanged += (sender, e) =>
+            {
+                // calculates incorrect when window is maximized
+                //this.MaxHeight = this.Height;
+                //this.MinHeight = this.Height;
+            };
+        }
+
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
@@ -21,6 +31,8 @@ namespace VaporDAWGui
 
             this.okButton.Click += (_, __) => this.DialogResult = true;
             this.cancelButton.Click += (_, __) => this.DialogResult = false;
+
+            this.Background = SystemColors.ControlBrush;
         }
     }
 }

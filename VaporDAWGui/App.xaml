@@ -4,6 +4,7 @@
              xmlns:local="clr-namespace:VaporDAWGui"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
+        <!--https://stackoverflow.com/questions/43638385/how-to-reuse-a-custom-designed-window-in-wpf-->
         <ControlTemplate 
              x:Key="StandardDialogTemplate" TargetType="Window">
             <StackPanel Margin="10" Orientation="Vertical">
@@ -14,13 +15,11 @@
                 </StackPanel>
             </StackPanel>
         </ControlTemplate>
-        <Style TargetType="Window" x:Key="MyWindowStyle">
+        <Style TargetType="Window" x:Key="StandardDialogStyle">
             <Setter Property="Template" Value="{StaticResource StandardDialogTemplate}" />
             <Setter Property="SizeToContent" Value="Height" />
             <Setter Property="Width" Value="300" />
-            <Setter Property="ResizeMode" Value="NoResize" />
-            <Setter Property="WindowStyle" Value="None" />
-            <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" />
+            <!--<Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" />-->
         </Style>
     </Application.Resources>
 </Application>

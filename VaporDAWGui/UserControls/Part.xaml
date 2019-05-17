@@ -19,6 +19,7 @@
     <UserControl.ContextMenu>
         <ContextMenu>
             <MenuItem Header="Edit start and duration..." Name="editStartAndDurationMenuItem"/>
+            <MenuItem Header="Rename..." Name="renameMenuItem"/>
             <!--<MenuItem Header="Menu item 2" />
                 <Separator />
                 <MenuItem Header="Menu item 3" />-->

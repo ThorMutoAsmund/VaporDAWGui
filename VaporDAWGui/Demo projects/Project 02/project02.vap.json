@@ -1,0 +1,119 @@
+{
+	"song": {
+		"title": "First Project",
+		"author": "Thor Muto Asmund",
+		"creationDate": "2019/05/15 12:10:02",
+		"changeDate": "2019/05/15 15:12:32",
+		"license", "LGPL",
+		"ver": "1",
+		"comments: "http://www.shortguid.com/#/guid/short",
+		"options": {
+			"defaultScripts": {
+				"mixer" : {
+					"script": "BAsOCQYFDQ8FBQ4MBAIFDg",
+				},
+				"trackMixer": {
+					"script": "CgADDg0KCw4CAQYEBA0PDg"
+				}
+			},
+		},
+		"layout": {
+			"visualStart": 0.0,
+			"visualLength": 8.0,			
+			"partZorder": [
+				"AwEMCQcNAAoNBg4PBAkPCQ",
+				"Bg0JBgUODgwNCQoHBAQEDw"
+			]
+		},
+		"samples": [
+			{
+				"id": "330OAAIMDQgBCQoLBAgMDw",
+				"ref": "/drumloop001.wav"
+			},
+			{
+				"id": "CAwCAwsMBwsMAA0ABAUEAw",
+				"ref": "/drumloop002.wav"
+			}
+		]
+		"scripts": [
+			{
+				"id": "BAsOCQYFDQ8FBQ4MBAIFDg",
+				"ref": "/mixer1.js"
+			},
+			{
+				"id": "CgADDg0KCw4CAQYEBA0PDg",
+				"ref": "/trackmixer1.js"
+			},
+			{
+				"id": "AwIOBQ0ADAgFAQQGBA8ABw",
+				"ref": "/echo.js"
+			},
+			{
+				"id": "CwIOBQ0ADAgFAQQGBA8ABw",
+				"ref": "/syncer.js"
+			}
+		],
+		"tracks": [
+			{"id": "CwcHAwMBDQAFDAoABA8FBg"},
+			{"id": "AgUNCAoEDQMKAgYBBAgKBA"},
+			{"id": "DwgEBg8JDQcBAwgBBAsIBA"}
+		],
+		"parts":[
+			{
+				"id": "Bg0JBgUODgwNCQoHBAQEDw",
+				"track": "CwcHAwMBDQAFDAoABA8FBg",
+				"start": 2.34,
+				"length": 10.0,
+				"level": 0.9,
+				"audible": "FF0OAAIMDQgBCQoLBAgMDw"
+			},
+			{
+				"id": "AwEMCQcNAAoNBg4PBAkPCQ",
+				"track": "CwcHAwMBDQAFDAoABA8FBg",
+				"start": 12.34,
+				"length": 5.0			
+				"level": 1.0f,
+				"audible": ""
+			}	
+		],
+		"generators": [
+			{
+				"id": "AA0OAAIMDQgBCQoLBAgMDw",
+				"part": "Bg0JBgUODgwNCQoHBAQEDw",
+				"script": "DwIOBQ0ADAgFAQQGBA8ABw",
+				"params": {
+					"sample": "330OAAIMDQgBCQoLBAgMDw",
+					"offset": 0.3
+				}
+			},
+			{
+				"id": "CC0OAAIMDQgBCQoLBAgMDw",
+				"part": "Bg0JBgUODgwNCQoHBAQEDw",
+				"script": "AwIOBQ0ADAgFAQQGBA8ABw",
+				"slots": {
+					"IN": "AA0OAAIMDQgBCQoLBAgMDw",
+				},
+				"params": {
+					"type": "hall",
+					"size": 5.0
+				}
+			},
+			{
+				"id": "FF0OAAIMDQgBCQoLBAgMDw",
+				"part": "Bg0JBgUODgwNCQoHBAQEDw",
+				"script": "CwIOBQ0ADAgFAQQGBA8ABw",
+				"audible": true,
+				"slots": {
+					"IN": "CC0OAAIMDQgBCQoLBAgMDw",
+					"SYNC": {
+						"generator": "AA0OAAIMDQgBCQoLBAgMDw",
+						"slot": "SYNCOUT"
+					}
+				},
+				"params": {
+				}
+			}
+		],
+		
+	}
+}

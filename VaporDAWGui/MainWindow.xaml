@@ -6,24 +6,38 @@
         xmlns:local="clr-namespace:VaporDAWGui"
         mc:Ignorable="d"
         Title="MainWindow" Height="600" Width="1000">
+    <Window.CommandBindings>
+        <CommandBinding Command="ApplicationCommands.New" Executed="OnNew" />
+        <CommandBinding Command="ApplicationCommands.Open" Executed="OnOpen" />
+        <CommandBinding Command="ApplicationCommands.Close" Executed="OnClose" />
+        <CommandBinding Command="ApplicationCommands.Save" Executed="OnSave" />
+        <CommandBinding Command="{x:Static local:CustomCommands.Exit}"  Executed="OnExit" />
+    </Window.CommandBindings>
+    <Window.InputBindings>
+        <KeyBinding Key="N" Modifiers="Control" Command="ApplicationCommands.New"/>
+        <KeyBinding Key="O" Modifiers="Control" Command="ApplicationCommands.Open"/>
+        <KeyBinding Key="F4" Modifiers="Control" Command="ApplicationCommands.Close"/>
+        <KeyBinding Key="S" Modifiers="Control" Command="ApplicationCommands.Save"/>
+        <KeyBinding Key="F4" Modifiers="Alt" Command="{x:Static local:CustomCommands.Exit}"/>
+    </Window.InputBindings>
     <DockPanel>
         <Menu DockPanel.Dock="Top" >
             <MenuItem Header="_File" Name="fileMenu" >
-                <MenuItem Header="_New" Name="newMenu" />
-                <MenuItem Header="_Open" Name="openMenu" />
+                <MenuItem Header="_New" Name="newMenu" InputGestureText="Ctrl+N" Command="New" />
+                <MenuItem Header="_Open" Name="openMenu" InputGestureText="Ctrl+O" Command="Open" />
                 <Separator />
-                <MenuItem Header="_Close" Name="closeMenu" />
+                <MenuItem Header="_Close" Name="closeMenu" IsEnabled="False" InputGestureText="Ctrl+F4" Command="Close" />
                 <Separator />
-                <MenuItem Header="_Save" Name="saveMenu" />
+                <MenuItem Header="_Save" Name="saveMenu" IsEnabled="False" InputGestureText="Ctrl+S" Command="Save" />
                 <Separator />
                 <MenuItem Header="S_ettings..." Name="settingsMenu" />
                 <Separator />
                 <MenuItem Header="Recent _Files..." Name="recentFilesMenu" />
                 <Separator />
-                <MenuItem Header="_Exit"  Name="exitMenu"/>
+                <MenuItem Header="_Exit"  Name="exitMenu" InputGestureText="Alt+F4" Command="{x:Static local:CustomCommands.Exit}"/>
             </MenuItem>
             <MenuItem Header="_Help" >
-                <MenuItem Header="_About" Name="aboutMenu" />
+                <MenuItem Header="_About" Name="aboutMenu" InputGestureText="Shift+F1" />
                 <Separator />
                 <MenuItem Header="_Check for updates" Name="checkForUpdatesMenu" />
             </MenuItem>
@@ -33,14 +47,30 @@
                 <DockPanel LastChildFill="True" Margin="0">
                     <Border>
                         <StackPanel Margin="3">
-                            <Label  Height="25" Content="Samples" Background="LightGray" />
-                            <local:SampleList Height="auto" Width="200" HorizontalAlignment="Left"/>
+                            <StackPanel>
+                                <Label  Height="25" Content="Samples" Background="LightGray" />
+                                <local:SampleList Height="auto" Width="200" HorizontalAlignment="Left"/>
+                                <StackPanel.ContextMenu>
+                                    <ContextMenu>
+                                        <MenuItem Header="Import samples..." Name="importSamplesMenuItem"/>
+                                    </ContextMenu>
+                                </StackPanel.ContextMenu>
+                            </StackPanel>
+                            <StackPanel>
+                                <Label  Height="25" Margin="0,10,0,0" Content="Scripts" Background="LightGray" />
+                                <local:ScriptList Height="auto" Width="200" HorizontalAlignment="Left"/>
+                                <StackPanel.ContextMenu>
+                                    <ContextMenu>
+                                        <MenuItem Header="New script..." Name="newScriptMenuItem"/>
+                                    </ContextMenu>
+                                </StackPanel.ContextMenu>
+                            </StackPanel>
                         </StackPanel>
                     </Border>
                     <local:Composer Visibility="Hidden" Height="auto" Width="auto" x:Name="composer"/>
                 </DockPanel>
             </TabItem>
-            <TabItem Header="Scripts">
+            <TabItem Header="Script edit">
                 <Grid Background="#FFE5E5E5">
                 </Grid>
             </TabItem>

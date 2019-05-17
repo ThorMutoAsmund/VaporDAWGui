@@ -1,0 +1,7 @@
+Find bedre måde at repræsentere start og duration i part/composer
+
+Drag sample
+
+Save parts
+
+HVad er Parts directoriet til??
