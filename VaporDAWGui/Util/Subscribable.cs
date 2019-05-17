@@ -8,9 +8,8 @@ namespace VaporDAWGui
 {
     public class Subscribable<TArg>
     {
-        public event EventHandler<TArg> ValueChanged;
+        public event Action<TArg> ValueChanged;
 
-        private TArg _value;
         public TArg Value
         {
             get => this._value;
@@ -19,14 +18,23 @@ namespace VaporDAWGui
                 if (!EqualityComparer<TArg>.Default.Equals(this._value, value))
                 {
                     this._value = value;
-                    this.ValueChanged?.Invoke(this, this._value);
+                    this.ValueChanged?.Invoke(value);
                 }
             }
         }
 
+        private TArg defaultValue;
+        private TArg _value;
+
         public Subscribable(TArg defaultValue = default(TArg))
         {
+            this.defaultValue = defaultValue;
             this._value = defaultValue;
+        }
+
+        public void Clear()
+        {
+            this.Value = this.defaultValue;
         }
     }
 }

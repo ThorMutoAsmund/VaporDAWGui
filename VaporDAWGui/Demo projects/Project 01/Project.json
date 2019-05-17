@@ -1,0 +1,31 @@
+{
+  "Song": {
+    "Title": "Untitled Song",
+    "Ver": 1,
+    "Author": null,
+    "Licence": null,
+    "Comments": null,
+    "CreationDate": "2019-05-17T23:13:49.237456Z",
+    "ChangeDate": "2019-05-17T23:13:49.237456Z",
+    "Tracks": [
+      {
+        "Id": "OV4OG9IWhkmSwPKw7b6FZg"
+      },
+      {
+        "Id": "jsNBbH25XUqSwv7RhSuYpQ"
+      },
+      {
+        "Id": "wiRL1hQrLke8Q1puHlrOwA"
+      },
+      {
+        "Id": "YpeCs+RLfU+h56N6rHdmpg"
+      },
+      {
+        "Id": "e0lx3Baa7ESslYKZSn6L8A"
+      }
+    ],
+    "Scripts": null,
+    "Samples": null,
+    "Parts": null
+  }
+}

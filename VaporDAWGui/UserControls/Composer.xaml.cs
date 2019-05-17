@@ -57,9 +57,9 @@ namespace VaporDAWGui
         private void AddPart()
         { 
             {
-                var part = new Part()
+                var part = new PartControl()
                 {
-                    Id = Env.Project.GenerateId(),
+                    Id = Base64.UUID(),
                     Title = $"Part {nextPartNumber++}"
                 };
                 Grid.SetRow(part, this.lastTrackClicked);
@@ -69,17 +69,17 @@ namespace VaporDAWGui
             };
         }
 
-        public IEnumerable<Part> GetPartsInRow(int row)
+        public IEnumerable<PartControl> GetPartsInRow(int row)
         {
-            return this.grid.Children.OfType<Part>().Where(element => Grid.GetRow(element) == row);
+            return this.grid.Children.OfType<PartControl>().Where(element => Grid.GetRow(element) == row);
         }
 
-        public IEnumerable<Part> GetAllParts()
+        public IEnumerable<PartControl> GetAllParts()
         {
-            return this.grid.Children.OfType<Part>();
+            return this.grid.Children.OfType<PartControl>();
         }
 
-        public void BringToFront(Part part)
+        public void BringToFront(PartControl part)
         {
             var maxZ = -10000;
             foreach (var child in this.grid.Children)

@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace VaporDAWGui
 {
-    public class Sample
+    public interface IStartUp
     {
-        public string Id { get; set; }
+        void StartUp();
     }
 }

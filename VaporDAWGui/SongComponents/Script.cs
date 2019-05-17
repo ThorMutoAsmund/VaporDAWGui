@@ -8,5 +8,6 @@ namespace VaporDAWGui
 {
     public class Script
     {
+        public string Id { get; set; }
     }
 }

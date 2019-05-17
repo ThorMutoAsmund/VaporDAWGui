@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace VaporDAWGui
 {
-    public class Config
+    public class Config : IStartUp
     {
         private List<string> recentFiles = new List<string>();
 
@@ -15,11 +15,16 @@ namespace VaporDAWGui
         public string AppPath => System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
         public string SamplesFolder => "Samples";
         public string ScriptsFolder => "Scripts";
+        public string ProjectFileName => "Project";
         public IEnumerable<string> RecentFiles => this.recentFiles;
 
         public int SnapMargin => 12;
         public int MinPartWidth => 10;
         public string TimeDurationFormat => "g5";
+
+        public void StartUp()
+        {
+        }
 
         public void AddRecentFile(string path)
         {

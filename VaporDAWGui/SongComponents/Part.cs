@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace VaporDAWGui
 {
-    public class TrackPart
+    public class Part
     {
+        public string Id { get; set; }
     }
 }

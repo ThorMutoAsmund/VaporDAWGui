@@ -14,14 +14,14 @@ namespace VaporDAWGui
     /// Interaction logic for MyUserControl.xaml 
     /// </summary> 
 
-    public partial class Part : UserControl
+    public partial class PartControl : UserControl
     {
         private enum PartInteractionType { None, Drag, ResizeRight }
 
         private TranslateTransform transform;
         private PartInteractionType currentInteraction = PartInteractionType.None;
         private bool dragSnapLeft;
-        private Part[] snapCandidates;
+        private PartControl[] snapCandidates;
         private bool wasInteractedWith;
         //private double draggedX;
         //private double resizedWidth;
@@ -47,7 +47,7 @@ namespace VaporDAWGui
             set => this.titleTextBlock.Text = value;
         }
 
-        public Part()
+        public PartControl()
         {
             InitializeComponent();
 
@@ -230,7 +230,7 @@ namespace VaporDAWGui
             }
         }
 
-        private Part[] GetSnapCandidates()
+        private PartControl[] GetSnapCandidates()
         {
             //return Env.Composer.GetPartsInRow(newDraggedRow).ToArray();
             return Env.Composer.GetAllParts().Where(p => p != this).ToArray();

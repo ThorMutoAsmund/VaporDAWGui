@@ -37,33 +37,31 @@ namespace VaporDAWGui
             this.newScriptMenuItem.Click += (sender, e) => CreateNewScript();
             this.importSamplesMenuItem.Click += (sender, e) => ImportSamples();
 
-            Env.Project.Loaded.ValueChanged += (sender, e) =>
+            Env.Project.Loaded.ValueChanged += loaded =>
             {
-                if (!e)
+                if (!loaded)
                 {
                     this.composer.Visibility = Visibility.Hidden;
                     SetTitle(null);
                     this.saveMenu.IsEnabled = false;
                     this.closeMenu.IsEnabled = false;
+                    SetTitle(null);
                 }
                 else
                 {
                     this.composer.Visibility = Visibility.Visible;
                     this.saveMenu.IsEnabled = true;
                     this.closeMenu.IsEnabled = true;
+                    SetTitle(Path.GetFileNameWithoutExtension(Env.Project.ProjectPath));
                 }
             };
 
-            Env.Project.ProjectPath.ValueChanged += (sender, e) =>
-            {
-                SetTitle(Path.GetFileNameWithoutExtension(e));
-            };
 
             if (Env.Conf.OpenDemoProjectOnLoad)
             {
                 var rootPath = Directory.GetParent(Env.Conf.AppPath).FullName;
                 rootPath = Directory.GetParent(rootPath).FullName;
-                Env.Project.Open(Path.Combine(rootPath, @"Demo projects\Project 01      "));
+                Env.Project.Open(Path.Combine(rootPath, @"Demo projects\Project 01"));
             }
         }
 
@@ -77,8 +75,8 @@ namespace VaporDAWGui
         {
             int i = 0;
             string newScriptName;
-            var allScripts = Directory.EnumerateFiles(System.IO.Path.Combine(Env.Project.ProjectPath.Value, Env.Conf.ScriptsFolder), "*.js").
-            Select(x => System.IO.Path.GetFileName(x)).ToArray();
+            var allScripts = Directory.EnumerateFiles(System.IO.Path.Combine(Env.Project.ProjectPath, Env.Conf.ScriptsFolder), "*.js").
+            Select(x => Path.GetFileName(x)).ToArray();
             do
             {
                 newScriptName = $"Script{++i}.js";
@@ -94,7 +92,7 @@ namespace VaporDAWGui
             if (window.ShowDialog() ?? false)
             {
                 // Create empty script file
-                var fileName = Path.Combine(Env.Project.ProjectPath.Value, Env.Conf.ScriptsFolder, newScriptName);
+                var fileName = Path.Combine(Env.Project.ProjectPath, Env.Conf.ScriptsFolder, newScriptName);
                 using (File.Create(fileName)) { }
             }
         }
@@ -112,7 +110,7 @@ namespace VaporDAWGui
                     foreach (var sourceFilePath in dialog.FileNames)
                     {
                         var sampleName = Path.GetFileName(sourceFilePath);
-                        var destinationFilePath = Path.Combine(Env.Project.ProjectPath.Value, Env.Conf.SamplesFolder, sampleName);
+                        var destinationFilePath = Path.Combine(Env.Project.ProjectPath, Env.Conf.SamplesFolder, sampleName);
                         if (File.Exists(destinationFilePath))
                         {
                             MessageBox.Show($"File {sampleName} already exists. Not copied");
@@ -194,7 +192,7 @@ namespace VaporDAWGui
             using (var dialog = new System.Windows.Forms.FolderBrowserDialog())
             {
                 dialog.Description = description;
-                dialog.SelectedPath = Env.Project.ProjectPath.Value ?? Env.Conf.AppPath;
+                dialog.SelectedPath = Env.Project.ProjectPath ?? Env.Conf.AppPath;
                 System.Windows.Forms.DialogResult result = dialog.ShowDialog();
 
                 if (result == System.Windows.Forms.DialogResult.OK)

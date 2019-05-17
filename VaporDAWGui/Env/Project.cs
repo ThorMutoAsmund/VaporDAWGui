@@ -8,12 +8,20 @@ using System.Windows;
 
 namespace VaporDAWGui
 {
-    public class Project
+    public class Project : IStartUp
     {
+        private int DefaultNumberOfTracks = 5;
+
         public Subscribable<bool> Loaded = new Subscribable<bool>(false);
-        public Subscribable<string> ProjectPath = new Subscribable<string>();
         public Subscribable<bool> ChangesMade = new Subscribable<bool>(false);
-        public Subscribable<Song> Song = new Subscribable<Song>(false);
+
+        public string ProjectPath { get; private set; }
+        public Song Song { get; private set; }
+        
+
+        public void StartUp()
+        {
+        }
 
         public void Close()
         {
@@ -30,35 +38,42 @@ namespace VaporDAWGui
             }
 
             this.Loaded.Value = false;
-            this.ProjectPath.Value = path;
-            this.Loaded.Value = true;
             this.ChangesMade.Value = false;
+            this.ProjectPath = path;
 
             // Ensure script directory
-            var scriptDirectory = Path.Combine(Env.Project.ProjectPath.Value, Env.Conf.ScriptsFolder);
+            var scriptDirectory = Path.Combine(Env.Project.ProjectPath, Env.Conf.ScriptsFolder);
             if (!Directory.Exists(scriptDirectory))
             {
                 Directory.CreateDirectory(scriptDirectory);
             }
 
             // Ensure sample directory
-            var sampleDirectory = System.IO.Path.Combine(Env.Project.ProjectPath.Value, Env.Conf.SamplesFolder);
+            var sampleDirectory = System.IO.Path.Combine(Env.Project.ProjectPath, Env.Conf.SamplesFolder);
             if (!Directory.Exists(sampleDirectory))
             {
                 Directory.CreateDirectory(sampleDirectory);
             }
 
+            // Create or load project
+            var projectFilePath = Path.Combine(Env.Project.ProjectPath, $"{Env.Conf.ProjectFileName}.json");
+            if (File.Exists(projectFilePath))
+            {
+                OpenProject(projectFilePath);
+            }
+            else
+            {
+                CreateProject(projectFilePath);
+            }
+
             Env.Conf.AddRecentFile(path);
+
+            this.Loaded.Value = true;
         }
 
         public void Save()
         {
             this.ChangesMade.Value = false;
-        }
-
-        public string GenerateId()
-        {
-            return new Guid().ToString();
         }
 
         public void UpdatePartStartTimeAndDuration(string id, double startTime, double duration)
@@ -74,6 +89,35 @@ namespace VaporDAWGui
         public void UpdatePartTrack(string id, int track)
         {
             this.ChangesMade.Value = true;
+        }
+        private void OpenProject(string projectFilePath)
+        {
+            var songSerializer = SongSerializer.FromFile(projectFilePath);
+            this.Song = songSerializer.Song;
+        }
+
+        private void CreateProject(string projectFilePath)
+        {
+            this.Song = new Song()
+            {
+                Title = "Untitled Song",
+                CreationDate = DateTime.UtcNow,
+                ChangeDate = DateTime.UtcNow,
+                Tracks = new Track[DefaultNumberOfTracks]
+            };
+
+            for (int t=0; t< DefaultNumberOfTracks; ++t)
+            {
+                this.Song.Tracks[t] = new Track()
+                {
+                    Id = Base64.UUID()
+                };
+            }
+
+            new SongSerializer()
+            {
+                Song = this.Song,
+            }.ToFile(projectFilePath);
         }
     }
 }

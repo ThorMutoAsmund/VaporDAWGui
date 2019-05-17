@@ -8,5 +8,6 @@ namespace VaporDAWGui
 {
     public class Track
     {
+        public string Id { get; set; }
     }
 }

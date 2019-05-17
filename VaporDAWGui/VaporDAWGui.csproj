@@ -37,6 +37,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Windows.Forms" />
@@ -61,19 +64,23 @@
     <Compile Include="Env\Project.cs" />
     <Compile Include="Env\Env.cs" />
     <Compile Include="Env\Config.cs" />
+    <Compile Include="Env\Watchers.cs" />
     <Compile Include="SongComponents\Script.cs" />
-    <Compile Include="SongComponents\TrackPart.cs" />
+    <Compile Include="SongComponents\SongSerializer.cs" />
+    <Compile Include="SongComponents\Part.cs" />
     <Compile Include="SongComponents\Sample.cs" />
     <Compile Include="SongComponents\Track.cs" />
     <Compile Include="SongComponents\Song.cs" />
     <Compile Include="UserControls\ScriptList.xaml.cs">
       <DependentUpon>ScriptList.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Util\Base64.cs" />
     <Compile Include="Util\CustomCommands.cs" />
+    <Compile Include="Util\IStartUp.cs" />
     <Compile Include="Util\ScriptInfo.cs" />
     <Compile Include="Util\SampleInfo.cs" />
-    <Compile Include="UserControls\Part.xaml.cs">
-      <DependentUpon>Part.xaml</DependentUpon>
+    <Compile Include="UserControls\PartControl.xaml.cs">
+      <DependentUpon>PartControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControls\SampleList.xaml.cs">
       <DependentUpon>SampleList.xaml</DependentUpon>
@@ -107,7 +114,7 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="UserControls\Part.xaml">
+    <Page Include="UserControls\PartControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -146,8 +153,10 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="Demo projects\Project 01\Project.json" />
     <None Include="Demo projects\Project 01\Project01.json.backup" />
     <None Include="Demo projects\Project 01\Project01.json" />
+    <None Include="Demo projects\Project 02\project02.vap.json" />
     <None Include="Js\node_modules\buffer-alloc-unsafe\package.json" />
     <None Include="Js\node_modules\buffer-alloc-unsafe\readme.md" />
     <None Include="Js\node_modules\buffer-alloc\package.json" />
@@ -202,6 +211,7 @@
     <None Include="Js\node_modules\wav\package.json" />
     <None Include="Js\node_modules\wav\README.md" />
     <None Include="Js\package.json" />
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -286,6 +296,13 @@
     <Content Include="Demo projects\Project 01\Scripts\Script1.js" />
     <Content Include="Demo projects\Project 01\Scripts\Script2.js" />
     <Content Include="Demo projects\Project 01\Scripts\Script3.js" />
+    <Content Include="Demo projects\Project 02\Samples\DS_BassA140D-03.wav" />
+    <Content Include="Demo projects\Project 02\Samples\DS_BassA140D-04.wav" />
+    <Content Include="Demo projects\Project 02\Samples\DS_BassB140D-05.wav" />
+    <Content Include="Demo projects\Project 02\Scripts\PlaySample.js" />
+    <Content Include="Demo projects\Project 02\Scripts\Script1.js" />
+    <Content Include="Demo projects\Project 02\Scripts\Script2.js" />
+    <Content Include="Demo projects\Project 02\Scripts\Script3.js" />
     <Content Include="Js\Mixer.js" />
     <Content Include="Js\LoadWav.js" />
     <Content Include="Js\node_modules\buffer-alloc-unsafe\index.js" />
@@ -334,7 +351,12 @@
     <Content Include="Js\node_modules\wav\test\reader.js" />
     <Content Include="Js\test.wav" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Demo projects\Project 02\Samples\Bass\" />
+    <Folder Include="Demo projects\Project 02\Samples\Beats\" />
+    <Folder Include="Demo projects\Project 02\Samples\Organ\" />
+    <Folder Include="Demo projects\Project 02\Samples\Synth\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
