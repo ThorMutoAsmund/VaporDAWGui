@@ -217,7 +217,7 @@ namespace VaporDAWGui
         public void EditScript(ScriptInfo script)
         {
             // Check if already open
-            foreach (var scriptTabItem in this.tabControl.Items.Cast<object>().Where(i => i is ScriptTabItem).Cast<ScriptTabItem>())
+            foreach (var scriptTabItem in this.tabControl.Items.WhereIs<ScriptTabItem>())
             {
                 if (scriptTabItem.Script.Path == script.Path)
                 {
