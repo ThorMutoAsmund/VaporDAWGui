@@ -23,5 +23,14 @@ namespace VaporDAWGui
                 this.DataContext = scriptsList;
             };
         }
+
+        private void StackPanel_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            if (e.ClickCount == 2)
+            {
+                var item = (sender as Grid).DataContext as ScriptInfo;
+                Env.MainWindow.EditScript(item);
+            }
+        }
     }
 }

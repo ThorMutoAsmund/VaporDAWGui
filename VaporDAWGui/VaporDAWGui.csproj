@@ -71,6 +71,9 @@
     <Compile Include="SongComponents\Sample.cs" />
     <Compile Include="SongComponents\Track.cs" />
     <Compile Include="SongComponents\Song.cs" />
+    <Compile Include="UserControls\ScriptTabItem.xaml.cs">
+      <DependentUpon>ScriptTabItem.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\ScriptList.xaml.cs">
       <DependentUpon>ScriptList.xaml</DependentUpon>
     </Compile>
@@ -87,7 +90,6 @@
     </Compile>
     <Compile Include="Util\MathExtensions.cs" />
     <Compile Include="Util\Subscribable.cs" />
-    <Compile Include="Util\UIElementCollectionExtensions.cs" />
     <Compile Include="Util\WpfExtensions.cs" />
     <Compile Include="Windows\EditStartTimeAndDurationWindow.xaml.cs">
       <DependentUpon>EditStartTimeAndDurationWindow.xaml</DependentUpon>
@@ -117,6 +119,10 @@
     <Page Include="UserControls\PartControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\ScriptTabItem.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="UserControls\ScriptList.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -157,6 +163,7 @@
     <None Include="Demo projects\Project 01\Project01.json.backup" />
     <None Include="Demo projects\Project 01\Project01.json" />
     <None Include="Demo projects\Project 02\project02.vap.json" />
+    <None Include="Demo projects\Project03\Project.json" />
     <None Include="Js\node_modules\buffer-alloc-unsafe\package.json" />
     <None Include="Js\node_modules\buffer-alloc-unsafe\readme.md" />
     <None Include="Js\node_modules\buffer-alloc\package.json" />
@@ -350,12 +357,15 @@
     <Content Include="Js\node_modules\wav\test\fixtures\M1F1-float64-AFsp.wav" />
     <Content Include="Js\node_modules\wav\test\reader.js" />
     <Content Include="Js\test.wav" />
+    <Resource Include="Projectplan.txt" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Demo projects\Project 02\Samples\Bass\" />
     <Folder Include="Demo projects\Project 02\Samples\Beats\" />
     <Folder Include="Demo projects\Project 02\Samples\Organ\" />
     <Folder Include="Demo projects\Project 02\Samples\Synth\" />
+    <Folder Include="Demo projects\Project03\Samples\" />
+    <Folder Include="Demo projects\Project03\Scripts\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

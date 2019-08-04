@@ -7,12 +7,13 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300" Background="{DynamicResource {x:Static SystemColors.ControlDarkBrushKey}}" Height="300" Width="300">
     <ListBox x:Name="scriptsListBox" Margin="0" ItemsSource="{Binding}"
-                 SelectedItem="{Binding SelectedScript, RelativeSource={RelativeSource AncestorType=Window}}">
+                 SelectedItem="{Binding SelectedScript, RelativeSource={RelativeSource AncestorType=Window}}"
+             HorizontalContentAlignment="Stretch">
         <ListBox.ItemTemplate>
             <DataTemplate>
-                <StackPanel>
+                <Grid MouseDown="StackPanel_MouseDown">
                     <TextBlock Text="{Binding Name}" />
-                </StackPanel>
+                </Grid>
             </DataTemplate>
         </ListBox.ItemTemplate>
     </ListBox>

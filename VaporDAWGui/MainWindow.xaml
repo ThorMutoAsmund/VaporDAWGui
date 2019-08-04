@@ -12,13 +12,14 @@
         <CommandBinding Command="ApplicationCommands.Close" Executed="OnClose" />
         <CommandBinding Command="ApplicationCommands.Save" Executed="OnSave" />
         <CommandBinding Command="{x:Static local:CustomCommands.Exit}"  Executed="OnExit" />
+        <CommandBinding Command="{x:Static local:CustomCommands.CloseTab}"  Executed="OnCloseTab" />
     </Window.CommandBindings>
     <Window.InputBindings>
-        <KeyBinding Key="N" Modifiers="Control" Command="ApplicationCommands.New"/>
-        <KeyBinding Key="O" Modifiers="Control" Command="ApplicationCommands.Open"/>
-        <KeyBinding Key="F4" Modifiers="Control" Command="ApplicationCommands.Close"/>
-        <KeyBinding Key="S" Modifiers="Control" Command="ApplicationCommands.Save"/>
+        <KeyBinding Key="N" Modifiers="Ctrl" Command="ApplicationCommands.New"/>
+        <KeyBinding Key="O" Modifiers="Ctrl" Command="ApplicationCommands.Open"/>
+        <KeyBinding Key="S" Modifiers="Ctrl" Command="ApplicationCommands.Save"/>
         <KeyBinding Key="F4" Modifiers="Alt" Command="{x:Static local:CustomCommands.Exit}"/>
+        <KeyBinding Key="F4" Modifiers="Ctrl" Command="{x:Static local:CustomCommands.CloseTab}"/>
     </Window.InputBindings>
     <DockPanel>
         <Menu DockPanel.Dock="Top" >
@@ -26,7 +27,7 @@
                 <MenuItem Header="_New" Name="newMenu" InputGestureText="Ctrl+N" Command="New" />
                 <MenuItem Header="_Open" Name="openMenu" InputGestureText="Ctrl+O" Command="Open" />
                 <Separator />
-                <MenuItem Header="_Close" Name="closeMenu" IsEnabled="False" InputGestureText="Ctrl+F4" Command="Close" />
+                <MenuItem Header="_Close" Name="closeMenu" IsEnabled="False" Command="Close" />
                 <Separator />
                 <MenuItem Header="_Save" Name="saveMenu" IsEnabled="False" InputGestureText="Ctrl+S" Command="Save" />
                 <Separator />
@@ -69,10 +70,6 @@
                     </Border>
                     <local:Composer Visibility="Hidden" Height="auto" Width="auto" x:Name="composer"/>
                 </DockPanel>
-            </TabItem>
-            <TabItem Header="Script edit">
-                <Grid Background="#FFE5E5E5">
-                </Grid>
             </TabItem>
         </TabControl>
     </DockPanel>

@@ -12,7 +12,9 @@ namespace VaporDAWGui
         static CustomCommands()
         {
             exitCommand = new RoutedCommand("Exit", typeof(CustomCommands));
+            closeTabCommand = new RoutedCommand("CloseTab", typeof(CustomCommands));
         }
+
         public static RoutedCommand Exit
         {
             get
@@ -21,5 +23,14 @@ namespace VaporDAWGui
             }
         }
         static RoutedCommand exitCommand;
+
+        public static RoutedCommand CloseTab
+        {
+            get
+            {
+                return (closeTabCommand);
+            }
+        }
+        static RoutedCommand closeTabCommand;
     }
 }

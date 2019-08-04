@@ -1,0 +1,180 @@
+﻿
+SAMPLES
+
+- Import sample (copy to local samples dir)
+
+- Remove sample from local dir
+
+- Find usage of sample
+
+- Rename sample
+
+- Import MP3 -> convert to sample
+
+- Preview sample
+
+- Edit sample
+
+
+GUI
+
+- Add sample as part
+
+- Set preview start and end times (used for building JS)
+
+- Zoom in out
+
+- Scroll
+
+
+PARTS
+
+- Change start and end of sample/part
+
+- Snap parts
+
+- Show sample on part
+
+- "Resize" in start of part?
+
+- Copy part
+
+- Copy part linked
+
+- Scissor part
+
+- Delete part
+
+- Delete part and linked copies
+
+- Unlink linked part
+
+- Part not drag out of area
+
+- Part not resize out of area
+
+- Track visibility
+
+- Track add and delete
+
+- Mute part
+
+- Unmute all parts
+
+
+TRACKS
+
+- Mute track
+
+- Unmute all tracks
+
+- Solo track
+
+
+SCRIPTS
+
+- Edit scripts inside program
+
+- Only one tab for a script
+
+- Close tab (Ctrl+F4)
+
+- Prevent close if not saved
+
+- Save script
+
+- Delete scripts
+
+
+PARTS SCRIPTS
+
+- Create new script and add to part (file is created in scripts folder)
+
+- Add script from library to script folder (and add to part)
+
+- Select script from local
+
+- See chain of scripts on part
+
+- Change order og scripts on parts
+
+- Assign values to scripts (GUI)
+
+- Save values so it can be read by JS
+
+- Assign scripts as values to scripts
+
+- Something about selecting part as input to script
+
+- Something about selecting output script
+
+- Find usage of scripts
+
+
+TRACK SCRIPTS
+
+- Create new script and add to track mixer (file is created in scripts folder)
+
+- Add script from library to script folder (and add to track mixer)
+
+- Select script from local
+
+- Same functionality as with parts for changing script order, settings values, deleting etc.
+
+
+PROJECT SCRIPTS
+
+- Create new script and add to project mixer (file is created in scripts folder)
+
+- Add script from library to script folder (and add to project mixer)
+
+- Select script from local
+
+- Same functionality as with parts for changing script order, settings values, deleting etc.
+
+
+RECORD
+
+- Record sample to track
+
+
+VST
+
+- Copy VST DLL to local folder
+
+- Link VST DLL
+
+- Use VST as effect
+
+- GUI for VST
+
+- VST values save
+
+
+JS
+
+- Preview build
+
+- Final build
+
+- Playback start
+
+- Playback stop
+
+
+FILE FORMAT
+
+- Versions
+
+
+
+
+
+
+
+
+
+
+
+
+

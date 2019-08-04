@@ -14,7 +14,7 @@ namespace VaporDAWGui
         public static Project Project { get; private set; } = new Project();
         public static Watchers Watchers { get; private set; } = new Watchers();
         public static Composer Composer { get; set; } 
-        public static Window MainWindow { get; set; }
+        public static MainWindow MainWindow { get; set; }
 
         public static void StartUp()
         {

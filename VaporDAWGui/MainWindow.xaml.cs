@@ -70,6 +70,7 @@ namespace VaporDAWGui
         private void OnClose(object sender, RoutedEventArgs e) => CloseProject();
         private void OnSave(object sender, RoutedEventArgs e) => Env.Project.Save();
         private void OnExit(object sender, RoutedEventArgs e) => ExitApplication();
+        private void OnCloseTab(object sender, RoutedEventArgs e) => CloseTab();
 
         private void CreateNewScript()
         {
@@ -202,9 +203,33 @@ namespace VaporDAWGui
             }
         }
 
-        private void CommandBinding_Executed(object sender, System.Windows.Input.ExecutedRoutedEventArgs e)
+        private void CloseTab()
         {
+            // Check if saved... TBD
 
+            // Close tab
+            if (this.tabControl.SelectedItem is ScriptTabItem)
+            {
+                this.tabControl.Items.RemoveAt(this.tabControl.SelectedIndex);
+            }
         }
+
+        public void EditScript(ScriptInfo script)
+        {
+            // Check if already open
+            foreach (var scriptTabItem in this.tabControl.Items.Cast<object>().Where(i => i is ScriptTabItem).Cast<ScriptTabItem>())
+            {
+                if (scriptTabItem.Script.Path == script.Path)
+                {
+                    this.tabControl.SelectedIndex = this.tabControl.Items.IndexOf(scriptTabItem);
+                    return;
+                }
+            }
+
+            // Else create new tab item and select it
+            this.tabControl.Items.Insert(this.tabControl.Items.Count, new ScriptTabItem(script));
+            this.tabControl.SelectedIndex = this.tabControl.Items.Count - 1;
+        }
+
     }
 }

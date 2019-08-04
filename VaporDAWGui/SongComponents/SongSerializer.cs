@@ -13,6 +13,7 @@ namespace VaporDAWGui
         public static int CurrentVersion = 1;
 
         public Song Song { get; set; }
+
         public SongSerializer()
         {
         }
