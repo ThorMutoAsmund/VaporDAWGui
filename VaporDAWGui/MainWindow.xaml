@@ -67,7 +67,7 @@
                             </StackPanel>
                         </StackPanel>
                     </Border>
-                    <local:Composer Visibility="Hidden" Height="auto" Width="auto" x:Name="composer"/>
+                    <local:Composer Height="auto" Width="auto" x:Name="composer"/>
                 </DockPanel>
             </TabItem>
             <TabItem Header="Script edit">

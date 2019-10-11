@@ -1,31 +1,53 @@
 {
-  "Song": {
-    "Title": "Untitled Song",
-    "Ver": 1,
-    "Author": null,
-    "Licence": null,
-    "Comments": null,
-    "CreationDate": "2019-05-17T23:13:49.237456Z",
-    "ChangeDate": "2019-05-17T23:13:49.237456Z",
-    "Tracks": [
-      {
-        "Id": "OV4OG9IWhkmSwPKw7b6FZg"
-      },
-      {
-        "Id": "jsNBbH25XUqSwv7RhSuYpQ"
-      },
-      {
-        "Id": "wiRL1hQrLke8Q1puHlrOwA"
-      },
-      {
-        "Id": "YpeCs+RLfU+h56N6rHdmpg"
-      },
-      {
-        "Id": "e0lx3Baa7ESslYKZSn6L8A"
-      }
-    ],
-    "Scripts": null,
-    "Samples": null,
-    "Parts": null
-  }
+	"Song": {
+		"Title": "Untitled Song",
+		"Ver": 1,
+		"Author": null,
+		"Licence": null,
+		"Comments": null,
+		"CreationDate": "2019-05-17T23:13:49.237456Z",
+		"ChangeDate": "2019-05-17T23:13:49.237456Z",
+		"Tracks": [
+		{
+			"Id": "OV4OG9IWhkmSwPKw7b6FZg"
+		},
+		{
+			"Id": "jsNBbH25XUqSwv7RhSuYpQ"
+		},
+		{
+			"Id": "wiRL1hQrLke8Q1puHlrOwA"
+		},
+		{
+			"Id": "YpeCs+RLfU+h56N6rHdmpg"
+		},
+		{
+			"Id": "e0lx3Baa7ESslYKZSn6L8A"
+		}
+		],
+		"Scripts": null,
+		"Samples": null,
+		"Parts": [
+		{
+			"Id": "PARTG9IWhkmSwPKw7b6FZ1",
+			"Title": "My part 1",
+			"Track": "OV4OG9IWhkmSwPKw7b6FZg",
+			"StartTime" : 0.0,
+			"Duration" : 10.0
+		},
+		{
+			"Id": "PARTG9IWhkmSwPKw7b6FZ3",
+			"Title": "My part 2",
+			"Track": "OV4OG9IWhkmSwPKw7b6FZg",
+			"StartTime" : 11.0,
+			"Duration" : 3.0
+		},
+		{
+			"Id": "PARTG9IWhkmSwPKw7b6FZ2",
+			"Title": "My part 3",
+			"Track": "jsNBbH25XUqSwv7RhSuYpQ",
+			"StartTime" : 1.0,
+			"Duration" : 10.0
+		}
+		]
+	}
 }

@@ -6,20 +6,10 @@
              xmlns:local="clr-namespace:VaporDAWGui"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300" Background="{DynamicResource {x:Static SystemColors.ControlDarkBrushKey}}">
-    <Grid Name="grid" >
+    <Grid Name="grid" Margin="0,5,0,-5" >
         <Grid.RowDefinitions>
-            <RowDefinition Height="50" />
-            <RowDefinition Height="50" />
-            <RowDefinition Height="50" />
-            <RowDefinition Height="50" />
-            <RowDefinition Height="50" />
-            <RowDefinition Height="50" />
-            <RowDefinition Height="50" />
-            <RowDefinition Height="50" />
-            <RowDefinition Height="50" />
-            <RowDefinition Height="50" />
         </Grid.RowDefinitions>
-        <Border Grid.RowSpan="100">
+        <Border Grid.RowSpan="100" Name="gridBorder">
             <Border.Background >
                 <VisualBrush TileMode="Tile" Viewport="0,0,50,50" ViewportUnits="Absolute"  Viewbox="0,0,50,50" ViewboxUnits="Absolute">
                     <VisualBrush.Visual>

@@ -41,7 +41,7 @@ namespace VaporDAWGui
             {
                 if (!loaded)
                 {
-                    this.composer.Visibility = Visibility.Hidden;
+                    //this.composer.Visibility = Visibility.Hidden;
                     SetTitle(null);
                     this.saveMenu.IsEnabled = false;
                     this.closeMenu.IsEnabled = false;
@@ -49,7 +49,7 @@ namespace VaporDAWGui
                 }
                 else
                 {
-                    this.composer.Visibility = Visibility.Visible;
+                    //this.composer.Visibility = Visibility.Visible;
                     this.saveMenu.IsEnabled = true;
                     this.closeMenu.IsEnabled = true;
                     SetTitle(Path.GetFileNameWithoutExtension(Env.Project.ProjectPath));
@@ -130,7 +130,6 @@ namespace VaporDAWGui
                     MessageBox.Show($"Successfully imported {cnt} file(s)");
                 }
             }
-
         }
 
         private void SetTitle(string projectName)

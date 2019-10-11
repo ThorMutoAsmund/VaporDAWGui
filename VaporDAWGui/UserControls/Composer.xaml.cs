@@ -48,25 +48,57 @@ namespace VaporDAWGui
             {
                 var position = e.GetPosition(this);
                 this.timeWhereLastClicked = this.TimeOffset + this.SecondsPerPixel * position.X;
-                this.lastTrackClicked = (int)(position.Y / 50);
+                this.lastTrackClicked = (int)(position.Y / this.RowHeight);
             };
 
-            this.addPartMenuItem.Click += (sender, e) => AddPart();
+            this.addPartMenuItem.Click += (sender, e) =>
+                AddPart(Project.CreateUUID(), $"Part {nextPartNumber++}", this.lastTrackClicked, this.timeWhereLastClicked, this.defaultDuration);
+
+            Env.Project.Loaded.ValueChanged += loaded =>
+                UpdateAll(loaded ? Env.Project.Song : null);
         }
 
-        private void AddPart()
-        { 
+        private void UpdateAll(Song song)
+        {
+            if (song == null)
             {
-                var part = new PartControl()
+                this.grid.Children.Clear();
+            }
+            else
+            {
+                foreach (var track in song.Tracks)
                 {
-                    Id = Base64.UUID(),
-                    Title = $"Part {nextPartNumber++}"
-                };
-                Grid.SetRow(part, this.lastTrackClicked);
-                this.grid.Children.Add(part);
+                    this.grid.RowDefinitions.Add(new RowDefinition() {
+                        Height = new GridLength(this.RowHeight),
+                        Tag = track.Id
+                    });
+                }
 
-                part.SetStartTimeAndDuration(this.timeWhereLastClicked, this.defaultDuration);
+                foreach (var part in song.Parts)
+                {
+                    var track = this.grid.RowDefinitions.FirstOrDefault(rd => rd.Tag as string == part.Track);
+
+                    if (track == null)
+                    {
+                        MessageBox.Show($"Track with id 'part.Track' not found", "Update error", MessageBoxButton.OK, MessageBoxImage.Asterisk);
+                        continue;
+                    }
+
+                    AddPart(part.Id, part.Title, this.grid.RowDefinitions.IndexOf(track), part.StartTime, part.Duration);
+                }
+            }
+        }
+
+        private void AddPart(string id, string title, int row, double startTime, double duration)
+        {
+            var partControl = new PartControl()
+            {
+                Id = id,
+                Title = title
             };
+            Grid.SetRow(partControl, row);
+            this.grid.Children.Add(partControl);
+            partControl.SetStartTimeAndDuration(startTime, duration);
         }
 
         public IEnumerable<PartControl> GetPartsInRow(int row)

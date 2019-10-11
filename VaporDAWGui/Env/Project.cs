@@ -17,7 +17,8 @@ namespace VaporDAWGui
 
         public string ProjectPath { get; private set; }
         public Song Song { get; private set; }
-        
+
+        public static string CreateUUID() => Base64.UUID();
 
         public void StartUp()
         {
@@ -59,7 +60,10 @@ namespace VaporDAWGui
             var projectFilePath = Path.Combine(Env.Project.ProjectPath, $"{Env.Conf.ProjectFileName}.json");
             if (File.Exists(projectFilePath))
             {
-                OpenProject(projectFilePath);
+                if (!OpenProject(projectFilePath))
+                {
+                    return;
+                }
             }
             else
             {
@@ -90,10 +94,16 @@ namespace VaporDAWGui
         {
             this.ChangesMade.Value = true;
         }
-        private void OpenProject(string projectFilePath)
+        private bool OpenProject(string projectFilePath)
         {
             var songSerializer = SongSerializer.FromFile(projectFilePath);
-            this.Song = songSerializer.Song;
+            if (songSerializer != null)
+            {
+                this.Song = songSerializer.Song;
+                return true;
+            }
+
+            return false;
         }
 
         private void CreateProject(string projectFilePath)
@@ -106,11 +116,11 @@ namespace VaporDAWGui
                 Tracks = new Track[DefaultNumberOfTracks]
             };
 
-            for (int t=0; t< DefaultNumberOfTracks; ++t)
+            for (int t=0; t<DefaultNumberOfTracks; ++t)
             {
                 this.Song.Tracks[t] = new Track()
                 {
-                    Id = Base64.UUID()
+                    Id = Project.CreateUUID()
                 };
             }
 
